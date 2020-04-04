@@ -1,17 +1,9 @@
 import React, {Component} from 'react';
-
+import Task from './Task';
 
 class Tasks extends Component{
     render(){
-        return  <div>
-                    { this.props.tasks.map( element=> 
-                        <p key={element.id}>
-                            <li>{element.id}</li>
-                            <li>{element.title}</li>
-                            <li>{element.description}</li>
-                        </p>
-                    )}
-                </div>
+        return this.props.tasks.map( task=><Task task={task} key={task.id}/>)
     }
 }
 

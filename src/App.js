@@ -12,7 +12,7 @@ class App extends Component{
   
   render(){
     return <div>
-  <Tasks tasks={this.state.tasks}></Tasks>
+  <Tasks tasks={this.state.tasks}></Tasks> 1:36:00
     </div>
   }
 }
