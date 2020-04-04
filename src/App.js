@@ -1,53 +1,20 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
+import tasks from './examples/tasks.json';
+import Tasks from './components/Tasks';
 
 
-// function Helloworld(props){
-//   return (
-//     <div id="helloworld">
-//       <h3>{props.subtitle}</h3>
-//      {props.mytext}
-//     </div>
-//   );
-// }
-
-class Helloworld extends React.Component{
-
+class App extends Component{
 
   state = {
-    show: true
-  }
-  changeState = () => {
-   this.setState({show:!this.state.show})
-  }
-
+    tasks: tasks 
+  } 
+  
   render(){
-    if(this.state.show){
-      return (
-        <div id="hello">
-          <h3>{this.props.mytext}</h3>
-          {this.props.subtitle}
-          <button onClick={this.changeState}>Turn Off</button>
-        </div>
-      )
-    }else{
-      return <div>
-        <h1>No existe nada</h1>
-        <button onClick={this.changeState}>Turn On</button>
-      </div> 
-    }
+    return <div>
+  <Tasks tasks={this.state.tasks}></Tasks>
+    </div>
   }
-}
-
-function App() {
-  return (
-   <div>
-     App Component 
-     <Helloworld mytext="Hola martin" subtitle="Mi descripcion"/>
-    <Helloworld mytext="Hola Jose"/> 
-    <Helloworld mytext="Hola Cmila"/>
-   </div>
-  );
 }
 
 export default App;
