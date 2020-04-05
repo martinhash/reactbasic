@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
 import tasks from './examples/tasks.json';
 import Post from './components/Post'
@@ -49,7 +49,13 @@ class App extends Component{
   render(){
     return <div>
       <Router>
-        <Route path="/" render={()=>{
+
+      <Link to="/">Home</Link>
+      <br/>
+      <Link to="/posts">Post</Link>
+
+
+        <Route exact path="/" render={()=>{
             return <div>
               <TaskForm
               addTask={this.addTask}/>
@@ -60,7 +66,7 @@ class App extends Component{
             </div>
           }}>
         </Route>
-        <Route path="/post" component={Post} />
+        <Route path="/posts" component={Post} />
       </Router>
     </div>
   }
