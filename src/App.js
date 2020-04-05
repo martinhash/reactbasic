@@ -15,28 +15,40 @@ class App extends Component{
   
 
   addTask = (title, description) => {
-  
-    
     const newTask = {
       title: title,
       description: description,
-      id: 45
+      id: this.state.tasks.length
     }
     console.log(newTask);
     this.setState({
       tasks:[ ...this.state.tasks, newTask ]
     })
-    // console.log(this.state, newTask);
-    // this.setState({
-    //   tasks: [...this.state.tasks, newTask]
-    // })
+  }
 
+  deleteTask = (id) =>{
+    const taskToDelete =  this.state.tasks.filter( task => task.id !== id);
+    this.setState({
+      tasks: taskToDelete
+    })
+  }
+
+  checkDone = (id) =>{
+    const newTasks = this.state.tasks.map( task=>{
+      if(id === task.id){
+        task.done = !task.done
+      }
+      return task;
+    })
+    this.setState({
+      tasks:newTasks
+    })
   }
 
   render(){
     return <div>
       <TaskForm addTask={this.addTask}/>
-  <Tasks tasks={this.state.tasks}></Tasks> 1:36:00
+      <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask} checkDone={this.checkDone}></Tasks>
     </div>
   }
 }
