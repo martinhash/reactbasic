@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import tasks from './examples/tasks.json';
-
+import Post from './components/Post'
 
 //COMPONENTS
 import Tasks from './components/Tasks';
@@ -49,6 +49,7 @@ class App extends Component{
     return <div>
       <TaskForm addTask={this.addTask}/>
       <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask} checkDone={this.checkDone}></Tasks>
+      <Post/>
     </div>
   }
 }
